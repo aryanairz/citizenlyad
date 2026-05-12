@@ -24,12 +24,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Render video
-        run: npx remotion render MiniQuiz out/mini-quiz.mp4
+      - name: Render MomPassed
+        run: npx remotion render MomPassed out/mom-passed.mp4
 
-      - name: Upload MP4 artifact
+      - name: Upload MomPassed artifact
         uses: actions/upload-artifact@v4
         with:
-          name: mini-quiz-video
-          path: out/mini-quiz.mp4
+          name: mom-passed-video
+          path: out/mom-passed.mp4
           retention-days: 30
