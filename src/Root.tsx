@@ -1,16 +1,27 @@
 import "./index.css";
 import { Composition } from "remotion";
 import { EightLanguages } from "./EightLanguages";
+import { MiniQuiz } from "./MiniQuiz";
 
 export const RemotionRoot: React.FC = () => {
   return (
-    <Composition
-      id="EightLanguages"
-      component={EightLanguages}
-      durationInFrames={440}
-      fps={30}
-      width={1080}
-      height={1920}
-    />
+    <>
+      <Composition
+        id="EightLanguages"
+        component={EightLanguages}
+        durationInFrames={440}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="MiniQuiz"
+        component={MiniQuiz}
+        durationInFrames={1180}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+    </>
   );
 };
