@@ -1,13 +1,13 @@
 import "./index.css";
 import { Composition } from "remotion";
-import { MomPassed } from "./MomPassed";
+import { CitizenlyFrenchAd } from "./compositions/CitizenlyFrenchAd";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <Composition
-      id="MomPassed"
-      component={MomPassed}
-      durationInFrames={655}
+      id="CitizenlyFrenchAd"
+      component={CitizenlyFrenchAd}
+      durationInFrames={450}
       fps={30}
       width={1080}
       height={1920}

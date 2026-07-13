@@ -6,7 +6,7 @@ import { MomCTA } from "./scenes/mompassed/CTA";
 export const MomPassed: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#FFFFFF" }}>
-      <Sequence from={0} durationInFrames={600} layout="none">
+      <Sequence durationInFrames={600} layout="none">
         <Conversation />
       </Sequence>
       <Sequence from={600} durationInFrames={55} layout="none">

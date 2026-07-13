@@ -1,21 +1,18 @@
 {
-  "name": "eight-languages",
+  "name": "citizenly-remotion-ad",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "Citizenly French vertical social advertisement",
   "repository": {},
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@remotion/cli": "4.0.459",
-    "@remotion/google-fonts": "^4.0.459",
-    "@remotion/tailwind-v4": "4.0.459",
+    "@remotion/cli": "4.0.489",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "remotion": "4.0.459",
-    "tailwindcss": "4.0.0"
+    "remotion": "4.0.489"
   },
   "devDependencies": {
-    "@remotion/eslint-config-flat": "4.0.459",
+    "@remotion/eslint-config-flat": "4.0.489",
     "@types/react": "19.2.7",
     "@types/web": "0.0.166",
     "eslint": "9.19.0",
@@ -23,10 +20,14 @@
     "typescript": "5.9.3"
   },
   "scripts": {
+    "studio": "remotion studio",
     "dev": "remotion studio",
+    "typecheck": "tsc --noEmit",
+    "render": "remotion render CitizenlyFrenchAd out/citizenly-french-ad.mp4 --codec=h264",
+    "render:github": "remotion render CitizenlyFrenchAd out/citizenly-french-ad.mp4 --codec=h264 --concurrency=2",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc --noEmit"
   },
   "sideEffects": [
     "*.css"

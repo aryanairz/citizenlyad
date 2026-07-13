@@ -8,7 +8,7 @@ import { Results } from "./scenes/miniquiz/Results";
 export const MiniQuiz: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#FFFFFF" }}>
-      <Sequence from={0} durationInFrames={60} layout="none">
+      <Sequence durationInFrames={60} layout="none">
         <Intro />
       </Sequence>
       <Sequence from={60} durationInFrames={900} layout="none">
