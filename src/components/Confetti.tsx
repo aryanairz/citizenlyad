@@ -12,9 +12,9 @@ export const Confetti: React.FC = () => {
   const frame = useCurrentFrame();
   return <div style={{position: 'absolute', inset: 0, overflow: 'hidden'}}>{particles.map(([x, delay, size, phase], index) => {
     const local = frame - delay;
-    const y = interpolate(local, [0, 100], [-90, 1320 + phase * 20], {extrapolateLeft: 'clamp', extrapolateRight: 'extend'});
-    const opacity = interpolate(local, [0, 8, 82, 105], [0, 1, 0.9, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-    const sway = Math.sin((local + phase) * 0.12) * 38;
+    const y = interpolate(local, [0, 78], [-90, 840 + phase * 8], {extrapolateLeft: 'clamp', extrapolateRight: 'extend'});
+    const opacity = interpolate(local, [0, 8, 58, 80], [0, 0.9, 0.72, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+    const sway = Math.sin((local + phase) * 0.12) * 34;
     return <div key={index} style={{position: 'absolute', left: x + sway, top: y, width: size, height: size * 2.4, borderRadius: index % 3 === 0 ? '50%' : 3, background: palette[index % palette.length], transform: `rotate(${local * (3 + index % 5)}deg)`, opacity}} />;
   })}</div>;
 };
