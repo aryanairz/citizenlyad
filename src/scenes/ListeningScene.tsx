@@ -7,8 +7,9 @@ import {colors, fontFamily} from '../styles/theme';
 export const ListeningScene: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const answer = spring({frame: frame - 22, fps, config: {damping: 18, stiffness: 110}});
-  const opacity = interpolate(frame, [0, 9, 69, 86], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
+  const firstWord = spring({frame: frame - 17, fps, config: {damping: 20, stiffness: 125}});
+  const secondWord = spring({frame: frame - 29, fps, config: {damping: 20, stiffness: 125}});
+  const opacity = interpolate(frame, [0, 9, 57, 74], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
   const pulse = 1 + Math.sin(frame * 0.24) * 0.04;
   return (
     <AbsoluteFill style={{background: colors.warm, fontFamily, opacity}}>
@@ -21,7 +22,10 @@ export const ListeningScene: React.FC = () => {
           </div>
           <div style={{fontSize: 25, color: colors.muted, fontWeight: 750}}>Listening…</div>
           <AnimatedWaveform />
-          <div style={{marginTop: 28, opacity: answer, transform: `translateY(${interpolate(answer,[0,1],[24,0])}px)`, fontSize: 43, color: colors.navy, fontWeight: 830}}>La Constitution.</div>
+          <div style={{marginTop: 28, fontSize: 43, color: colors.navy, fontWeight: 830}}>
+            <span style={{display: 'inline-block', opacity: firstWord, transform: `translateY(${interpolate(firstWord,[0,1],[18,0])}px)`}}>La…</span>{' '}
+            <span style={{display: 'inline-block', opacity: secondWord, transform: `translateY(${interpolate(secondWord,[0,1],[18,0])}px)`}}>Constitution.</span>
+          </div>
         </div>
       </PhoneFrame>
     </AbsoluteFill>
