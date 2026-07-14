@@ -14,8 +14,7 @@ export const InterviewScene: React.FC = () => {
     <AbsoluteFill style={{background: colors.warm, fontFamily, opacity}}>
       <PhoneFrame style={{position: 'absolute', left: 200, top: 292, transform: `translateY(${interpolate(enter,[0,1],[35,0])}px)`}}>
         <div style={{padding: '120px 54px 60px'}}>
-          <div style={{display: 'flex', alignItems: 'center', gap: 14, fontSize: 21, color: colors.red, fontWeight: 850, letterSpacing: 1.2, textTransform: 'uppercase'}}><span style={{width: 10, height: 10, borderRadius: '50%', background: colors.red}} />USCIS Interview Practice</div>
-          <div style={{margin: '30px 0 22px', display: 'flex', alignItems: 'center', gap: 24}}><OfficerAvatar size={142} /><div><div style={{fontSize: 22, color: colors.muted, fontWeight: 650}}>Practice officer</div><div style={{fontSize: 31, color: colors.navy, fontWeight: 820, marginTop: 5}}>Question 4 of 10</div></div></div>
+          <div style={{margin: '18px 0 28px', display: 'flex', alignItems: 'center', gap: 24}}><OfficerAvatar size={142} /><div><div style={{fontSize: 22, color: colors.muted, fontWeight: 650}}>Practice officer</div><div style={{fontSize: 31, color: colors.navy, fontWeight: 820, marginTop: 5}}>Question 4 of 10</div></div></div>
           <div style={{background: '#F5F6F9', borderRadius: 34, padding: '32px 32px 28px', border: `2px solid ${colors.line}`}}>
             <div style={{fontSize: 22, color: colors.muted, fontWeight: 750, marginBottom: 14}}>IN ENGLISH</div>
             <div style={{fontSize: 43, lineHeight: 1.14, letterSpacing: -1.2, color: colors.navy, fontWeight: 820}}>What is the supreme law of the land?</div>
