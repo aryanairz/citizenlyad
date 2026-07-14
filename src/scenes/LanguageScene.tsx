@@ -15,7 +15,7 @@ export const LanguageScene: React.FC = () => {
   return (
     <AbsoluteFill style={{background: colors.warm, fontFamily, opacity: opacity * exit, overflow: 'hidden'}}>
       <div style={{position: 'absolute', left: 110, top: 250, width: 780, height: 900, borderRadius: '50%', background: 'radial-gradient(circle,rgba(27,42,74,.07),transparent 67%)'}} />
-      <PhoneFrame style={{position: 'absolute', left: 160, top: y, transform: `rotate(${rotation}deg)`}}><LanguageSelector /></PhoneFrame>
+      <PhoneFrame style={{position: 'absolute', left: 200, top: y, transform: `rotate(${rotation}deg)`}}><LanguageSelector /></PhoneFrame>
     </AbsoluteFill>
   );
 };

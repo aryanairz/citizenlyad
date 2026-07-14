@@ -12,7 +12,7 @@ export const ListeningScene: React.FC = () => {
   const pulse = 1 + Math.sin(frame * 0.24) * 0.04;
   return (
     <AbsoluteFill style={{background: colors.warm, fontFamily, opacity}}>
-      <PhoneFrame style={{position: 'absolute', left: 160, top: 292}}>
+      <PhoneFrame style={{position: 'absolute', left: 200, top: 292}}>
         <div style={{padding: '145px 54px 60px', textAlign: 'center'}}>
           <div style={{fontSize: 24, color: colors.red, fontWeight: 850, letterSpacing: 1.4, textTransform: 'uppercase'}}>Your turn</div>
           <div style={{fontSize: 44, color: colors.navy, fontWeight: 830, marginTop: 20}}>Answer in French</div>

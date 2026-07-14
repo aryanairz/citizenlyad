@@ -11,7 +11,7 @@ export const ResultsScene: React.FC = () => {
   const opacity = interpolate(frame, [0, 10, 91, 106], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
   return (
     <AbsoluteFill style={{background: colors.warm, fontFamily, opacity}}>
-      <PhoneFrame style={{position: 'absolute', left: 160, top: 292}}>
+      <PhoneFrame style={{position: 'absolute', left: 200, top: 292}}>
         <div style={{padding: '132px 42px 50px'}}>
           <div style={{fontSize: 23, color: colors.red, fontWeight: 850, letterSpacing: 1.4, textTransform: 'uppercase'}}>AI feedback</div>
           <div style={{fontSize: 46, color: colors.navy, fontWeight: 850, margin: '14px 0 34px'}}>Great answer.</div>
