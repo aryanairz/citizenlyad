@@ -32,11 +32,24 @@ jobs:
       - name: Type-check
         run: npm run typecheck
 
+      - name: Render French H.264 video
+        run: npm run render:github
+
       - name: Render Spanish H.264 video
         run: npm run render:spanish:github
 
-      - name: Verify output
-        run: test -s out/citizenly-spanish-ad.mp4
+      - name: Verify outputs
+        run: |
+          test -s out/citizenly-french-ad.mp4
+          test -s out/citizenly-spanish-ad.mp4
+
+      - name: Upload French artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: citizenly-french-ad
+          path: out/citizenly-french-ad.mp4
+          if-no-files-found: error
+          retention-days: 14
 
       - name: Upload Spanish artifact
         uses: actions/upload-artifact@v4
