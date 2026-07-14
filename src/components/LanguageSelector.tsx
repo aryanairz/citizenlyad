@@ -3,7 +3,7 @@ import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {colors} from '../styles/theme';
 import {TapIndicator} from './TapIndicator';
 
-const languages = ['English', 'Español', 'Français', 'हिन्दी'];
+const languages = ['English', 'Español', 'Français', 'Deutsch'];
 
 export const LanguageSelector: React.FC<{
   selectedLanguage?: string;
