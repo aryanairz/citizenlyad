@@ -26,8 +26,10 @@ export const LanguageSelector: React.FC<{
           return (
             <div key={language} style={{height: 104, borderRadius: 28, border: `2px solid ${isSelected ? colors.red : colors.line}`, background: isSelected && selected ? '#FFF2F4' : colors.white, display: 'flex', alignItems: 'center', padding: '0 30px', boxSizing: 'border-box', position: 'relative', opacity: fade, transform: isSelected && selected ? `scale(${interpolate(settle,[0,1],[1,1.025])})` : undefined}}>
               <span style={{fontSize: 31, color: colors.navy, fontWeight: isSelected ? 800 : 650}}>{language}</span>
-              {isSelected && selected ? <div style={{marginLeft: 'auto', width: 42, height: 42, borderRadius: '50%', background: colors.red, display: 'grid', placeItems: 'center', color: '#fff', fontSize: 27, fontWeight: 900}}>✓</div> : null}
-              {isSelected ? <TapIndicator startFrame={17} /> : null}
+              {isSelected ? <div style={{marginLeft: 'auto', width: 42, height: 42, position: 'relative', flex: '0 0 auto'}}>
+                {selected ? <div style={{position: 'absolute', inset: 0, borderRadius: '50%', background: colors.red, display: 'grid', placeItems: 'center', color: '#fff', fontSize: 27, fontWeight: 900}}>✓</div> : null}
+                <TapIndicator startFrame={17} />
+              </div> : null}
             </div>
           );
         })}
