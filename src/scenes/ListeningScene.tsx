@@ -1,14 +1,13 @@
 import React from 'react';
-import {AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Easing, interpolate, useCurrentFrame} from 'remotion';
 import {AnimatedWaveform} from '../components/AnimatedWaveform';
 import {PhoneFrame} from '../components/PhoneFrame';
 import {colors, fontFamily} from '../styles/theme';
 
 export const ListeningScene: React.FC = () => {
   const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const firstWord = spring({frame: frame - 17, fps, config: {damping: 20, stiffness: 125}});
-  const secondWord = spring({frame: frame - 29, fps, config: {damping: 20, stiffness: 125}});
+  const firstWordVisible = frame >= 17;
+  const secondWordVisible = frame >= 29;
   const opacity = interpolate(frame, [0, 9, 57, 74], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
   const pulse = 1 + Math.sin(frame * 0.24) * 0.04;
   return (
@@ -23,8 +22,8 @@ export const ListeningScene: React.FC = () => {
           <div style={{fontSize: 25, color: colors.muted, fontWeight: 750}}>Listening…</div>
           <AnimatedWaveform />
           <div style={{marginTop: 28, fontSize: 43, color: colors.navy, fontWeight: 830}}>
-            <span style={{display: 'inline-block', opacity: firstWord, transform: `translateY(${interpolate(firstWord,[0,1],[18,0])}px)`}}>La…</span>{' '}
-            <span style={{display: 'inline-block', opacity: secondWord, transform: `translateY(${interpolate(secondWord,[0,1],[18,0])}px)`}}>Constitution.</span>
+            <span style={{visibility: firstWordVisible ? 'visible' : 'hidden'}}>La</span>{' '}
+            <span style={{visibility: secondWordVisible ? 'visible' : 'hidden'}}>Constitution.</span>
           </div>
         </div>
       </PhoneFrame>
