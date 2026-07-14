@@ -24,11 +24,6 @@ export const OutroScene: React.FC = () => {
           </div>
           <div style={{fontSize: 28, color: colors.red, fontWeight: 850, textTransform: 'uppercase', letterSpacing: 2.3}}>Practice complete</div>
           <div style={{fontSize: 61, lineHeight: 1.06, letterSpacing: -1.8, color: colors.navy, fontWeight: 860, marginTop: 24}}>Ready for your<br />interview.</div>
-          <div style={{height: 2, background: colors.line, margin: '48px 12px 38px'}} />
-          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18}}>
-            <span style={{fontSize: 42, color: colors.red, fontWeight: 880}}>96%</span>
-            <span style={{fontSize: 27, color: colors.muted, fontWeight: 720}}>pronunciation</span>
-          </div>
         </div>
       </PhoneFrame>
     </AbsoluteFill>
