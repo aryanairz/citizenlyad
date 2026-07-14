@@ -4,7 +4,13 @@ import {AnimatedWaveform} from '../components/AnimatedWaveform';
 import {PhoneFrame} from '../components/PhoneFrame';
 import {colors, fontFamily} from '../styles/theme';
 
-export const ListeningScene: React.FC = () => {
+export const ListeningScene: React.FC<{
+  eyebrow?: string;
+  title?: string;
+  status?: string;
+  firstAnswerPart?: string;
+  secondAnswerPart?: string;
+}> = ({eyebrow = 'Your turn', title = 'Answer in French', status = 'Listening…', firstAnswerPart = 'La', secondAnswerPart = 'Constitution.'}) => {
   const frame = useCurrentFrame();
   const firstWordVisible = frame >= 17;
   const secondWordVisible = frame >= 29;
@@ -14,16 +20,16 @@ export const ListeningScene: React.FC = () => {
     <AbsoluteFill style={{background: colors.warm, fontFamily, opacity}}>
       <PhoneFrame style={{position: 'absolute', left: 200, top: 292}}>
         <div style={{padding: '145px 54px 60px', textAlign: 'center'}}>
-          <div style={{fontSize: 24, color: colors.red, fontWeight: 850, letterSpacing: 1.4, textTransform: 'uppercase'}}>Your turn</div>
-          <div style={{fontSize: 44, color: colors.navy, fontWeight: 830, marginTop: 20}}>Answer in French</div>
+          <div style={{fontSize: 24, color: colors.red, fontWeight: 850, letterSpacing: 1.4, textTransform: 'uppercase'}}>{eyebrow}</div>
+          <div style={{fontSize: 44, color: colors.navy, fontWeight: 830, marginTop: 20}}>{title}</div>
           <div style={{margin: '85px auto 60px', width: 154, height: 154, borderRadius: '50%', background: colors.red, display: 'grid', placeItems: 'center', transform: `scale(${pulse})`, boxShadow: `0 0 0 ${20 + Math.sin(frame*.2)*7}px rgba(196,30,58,.10), 0 18px 45px rgba(196,30,58,.28)`}}>
             <svg width="68" height="68" viewBox="0 0 64 64"><rect x="23" y="8" width="18" height="34" rx="9" fill="#fff"/><path d="M15 31c0 12 7 19 17 19s17-7 17-19M32 50v8M23 58h18" fill="none" stroke="#fff" strokeWidth="5" strokeLinecap="round"/></svg>
           </div>
-          <div style={{fontSize: 25, color: colors.muted, fontWeight: 750}}>Listening…</div>
+          <div style={{fontSize: 25, color: colors.muted, fontWeight: 750}}>{status}</div>
           <AnimatedWaveform />
           <div style={{marginTop: 28, fontSize: 43, color: colors.navy, fontWeight: 830}}>
-            <span style={{visibility: firstWordVisible ? 'visible' : 'hidden'}}>La</span>{' '}
-            <span style={{visibility: secondWordVisible ? 'visible' : 'hidden'}}>Constitution.</span>
+            <span style={{visibility: firstWordVisible ? 'visible' : 'hidden'}}>{firstAnswerPart}</span>{' '}
+            <span style={{visibility: secondWordVisible ? 'visible' : 'hidden'}}>{secondAnswerPart}</span>
           </div>
         </div>
       </PhoneFrame>

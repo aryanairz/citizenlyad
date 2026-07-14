@@ -25,6 +25,8 @@
     "typecheck": "tsc --noEmit",
     "render": "remotion render CitizenlyFrenchAd out/citizenly-french-ad.mp4 --codec=h264",
     "render:github": "remotion render CitizenlyFrenchAd out/citizenly-french-ad.mp4 --codec=h264 --concurrency=2",
+    "render:spanish": "remotion render CitizenlySpanishAd out/citizenly-spanish-ad.mp4 --codec=h264",
+    "render:spanish:github": "remotion render CitizenlySpanishAd out/citizenly-spanish-ad.mp4 --codec=h264 --concurrency=2",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc --noEmit"

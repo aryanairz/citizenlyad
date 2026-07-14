@@ -1,6 +1,6 @@
 # Citizenly French Remotion Ad
 
-A polished 15-second vertical product advertisement for Citizenly, built with React, TypeScript, and Remotion. The `CitizenlyFrenchAd` composition is 1080 × 1920, 30 fps, and 450 frames. It renders to H.264 at `out/citizenly-french-ad.mp4`.
+A polished 15-second vertical product advertisement for Citizenly, built with React, TypeScript, and Remotion. The `CitizenlyFrenchAd` and `CitizenlySpanishAd` compositions are 1080 × 1920, 30 fps, and 450 frames. They render to H.264 at `out/citizenly-french-ad.mp4` and `out/citizenly-spanish-ad.mp4`.
 
 All motion is deterministic and frame-driven. The project uses only bundled Citizenly PNGs, React/CSS, and inline SVG; rendering does not fetch fonts, images, or API data.
 
@@ -16,6 +16,7 @@ Attempt a local MP4 render with:
 
 ```powershell
 npm.cmd run render
+npm.cmd run render:spanish
 ```
 
 PowerShell on this machine blocks the `npm.ps1` shim, so the examples use `npm.cmd`. From Command Prompt, ordinary `npm` also works.

@@ -5,7 +5,11 @@ import {Confetti} from '../components/Confetti';
 import {PhoneFrame} from '../components/PhoneFrame';
 import {colors, fontFamily} from '../styles/theme';
 
-export const OutroScene: React.FC = () => {
+export const OutroScene: React.FC<{
+  completeLabel?: string;
+  readyLineOne?: string;
+  readyLineTwo?: string;
+}> = ({completeLabel = 'Practice complete', readyLineOne = 'Ready for your', readyLineTwo = 'interview.'}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const move = interpolate(frame, [0, 34], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
@@ -22,8 +26,8 @@ export const OutroScene: React.FC = () => {
           <div style={{margin: '12px auto 43px', width: 138, height: 138, borderRadius: 46, background: '#E7F7F0', display: 'grid', placeItems: 'center', boxShadow: '0 16px 38px rgba(36,150,109,.14)'}}>
             <svg width="72" height="72" viewBox="0 0 64 64"><path d="M17 33l10 10 21-25" fill="none" stroke={colors.green} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </div>
-          <div style={{fontSize: 28, color: colors.red, fontWeight: 850, textTransform: 'uppercase', letterSpacing: 2.3}}>Practice complete</div>
-          <div style={{fontSize: 61, lineHeight: 1.06, letterSpacing: -1.8, color: colors.navy, fontWeight: 860, marginTop: 24}}>Ready for your<br />interview.</div>
+          <div style={{fontSize: 28, color: colors.red, fontWeight: 850, textTransform: 'uppercase', letterSpacing: 2.3}}>{completeLabel}</div>
+          <div style={{fontSize: 61, lineHeight: 1.06, letterSpacing: -1.8, color: colors.navy, fontWeight: 860, marginTop: 24}}>{readyLineOne}<br />{readyLineTwo}</div>
         </div>
       </PhoneFrame>
     </AbsoluteFill>

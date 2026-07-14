@@ -2,7 +2,7 @@ import React from 'react';
 import {interpolate, useCurrentFrame} from 'remotion';
 import {colors} from '../styles/theme';
 
-export const SpeakerButton: React.FC = () => {
+export const SpeakerButton: React.FC<{label?: string}> = ({label = 'Listen'}) => {
   const frame = useCurrentFrame();
   return (
     <div style={{display: 'flex', alignItems: 'center', gap: 20}}>
@@ -18,7 +18,7 @@ export const SpeakerButton: React.FC = () => {
           return <div key={i} style={{width: 5, height: 28 + i * 15, borderRadius: 8, background: colors.red, opacity}} />;
         })}
       </div>
-      <span style={{fontSize: 24, fontWeight: 700, color: colors.navy}}>Listen</span>
+      <span style={{fontSize: 24, fontWeight: 700, color: colors.navy}}>{label}</span>
     </div>
   );
 };
