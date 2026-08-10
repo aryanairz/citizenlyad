@@ -3,14 +3,15 @@ import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {colors} from '../styles/theme';
 import {TapIndicator} from './TapIndicator';
 
-const languages = ['English', 'Español', 'Français', 'Deutsch'];
+const defaultLanguages = ['English', 'Español', 'Français', 'Deutsch'];
 
 export const LanguageSelector: React.FC<{
   selectedLanguage?: string;
   eyebrow?: string;
   title?: React.ReactNode;
   hint?: string;
-}> = ({selectedLanguage = 'Français', eyebrow = 'Welcome to Citizenly', title = <>Choose your<br />language</>, hint = 'You can change this anytime in Settings.'}) => {
+  languages?: readonly string[];
+}> = ({selectedLanguage = 'Français', eyebrow = 'Welcome to Citizenly', title = <>Choose your<br />language</>, hint = 'You can change this anytime in Settings.', languages = defaultLanguages}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const selected = frame >= 32;

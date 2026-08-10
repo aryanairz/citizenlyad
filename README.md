@@ -1,6 +1,8 @@
 # Citizenly French Remotion Ad
 
-A polished 15-second vertical product advertisement for Citizenly, built with React, TypeScript, and Remotion. The `CitizenlyFrenchAd` and `CitizenlySpanishAd` compositions are 1080 × 1920, 30 fps, and 450 frames. They render to H.264 at `out/citizenly-french-ad.mp4` and `out/citizenly-spanish-ad.mp4`.
+A polished family of 15-second vertical product advertisements for Citizenly, built with React, TypeScript, and Remotion. Every composition is 1080 × 1920, 30 fps, and 450 frames.
+
+Available compositions include French, Spanish, German, Dutch, Swedish, Norwegian, Danish, Italian, Portuguese, Catalan, Indonesian, Tagalog, Finnish, Croatian, and Bosnian variants.
 
 All motion is deterministic and frame-driven. The project uses only bundled Citizenly PNGs, React/CSS, and inline SVG; rendering does not fetch fonts, images, or API data.
 
@@ -35,6 +37,8 @@ The current development machine reports `win32` and `arm64`. Remotion's managed 
 6. Open the completed workflow run and download **citizenly-french-ad** from the **Artifacts** section.
 
 The artifact contains `citizenly-french-ad.mp4` and is retained for 14 days.
+
+The manually triggered **Render Citizenly Localized Ads** workflow renders the 13 Germanic, Romance, and other localized variants as separate downloadable artifacts.
 
 ## GitHub setup
 

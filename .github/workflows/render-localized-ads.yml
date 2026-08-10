@@ -1,0 +1,89 @@
+name: Render Citizenly Localized Ads
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - composition: CitizenlyGermanAd
+            filename: citizenly-german-ad.mp4
+            artifact: citizenly-german-ad
+          - composition: CitizenlyDutchAd
+            filename: citizenly-dutch-ad.mp4
+            artifact: citizenly-dutch-ad
+          - composition: CitizenlySwedishAd
+            filename: citizenly-swedish-ad.mp4
+            artifact: citizenly-swedish-ad
+          - composition: CitizenlyNorwegianAd
+            filename: citizenly-norwegian-ad.mp4
+            artifact: citizenly-norwegian-ad
+          - composition: CitizenlyDanishAd
+            filename: citizenly-danish-ad.mp4
+            artifact: citizenly-danish-ad
+          - composition: CitizenlyItalianAd
+            filename: citizenly-italian-ad.mp4
+            artifact: citizenly-italian-ad
+          - composition: CitizenlyPortugueseAd
+            filename: citizenly-portuguese-ad.mp4
+            artifact: citizenly-portuguese-ad
+          - composition: CitizenlyCatalanAd
+            filename: citizenly-catalan-ad.mp4
+            artifact: citizenly-catalan-ad
+          - composition: CitizenlyIndonesianAd
+            filename: citizenly-indonesian-ad.mp4
+            artifact: citizenly-indonesian-ad
+          - composition: CitizenlyTagalogAd
+            filename: citizenly-tagalog-ad.mp4
+            artifact: citizenly-tagalog-ad
+          - composition: CitizenlyFinnishAd
+            filename: citizenly-finnish-ad.mp4
+            artifact: citizenly-finnish-ad
+          - composition: CitizenlyCroatianAd
+            filename: citizenly-croatian-ad.mp4
+            artifact: citizenly-croatian-ad
+          - composition: CitizenlyBosnianAd
+            filename: citizenly-bosnian-ad.mp4
+            artifact: citizenly-bosnian-ad
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Ensure Remotion browser
+        run: npx remotion browser ensure
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Render ${{ matrix.composition }}
+        run: npx remotion render ${{ matrix.composition }} out/${{ matrix.filename }} --codec=h264 --concurrency=2
+
+      - name: Verify output
+        run: test -s out/${{ matrix.filename }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: out/${{ matrix.filename }}
+          if-no-files-found: error
+          retention-days: 14

@@ -1,6 +1,10 @@
 import "./index.css";
 import { Composition } from "remotion";
 import { CitizenlyFrenchAd } from "./compositions/CitizenlyFrenchAd";
+import {
+  CitizenlyLanguageAd,
+  languageAdConfigs,
+} from "./compositions/CitizenlyLanguageAd";
 import { CitizenlySpanishAd } from "./compositions/CitizenlySpanishAd";
 
 export const RemotionRoot: React.FC = () => {
@@ -22,6 +26,18 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       />
+      {languageAdConfigs.map((config) => (
+        <Composition
+          key={config.key}
+          id={config.compositionId}
+          component={CitizenlyLanguageAd}
+          defaultProps={{ languageKey: config.key }}
+          durationInFrames={450}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+      ))}
     </>
   );
 };

@@ -9,6 +9,7 @@ export const LanguageScene: React.FC<{
   eyebrow?: string;
   title?: React.ReactNode;
   hint?: string;
+  languages?: readonly string[];
 }> = (props) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
