@@ -10,10 +10,11 @@ export const ListeningScene: React.FC<{
   status?: string;
   firstAnswerPart?: string;
   secondAnswerPart?: string;
-}> = ({eyebrow = 'Your turn', title = 'Answer in French', status = 'Listening…', firstAnswerPart = 'La', secondAnswerPart = 'Constitution.'}) => {
+  secondAnswerDelayFrames?: number;
+}> = ({eyebrow = 'Your turn', title = 'Answer in French', status = 'Listening…', firstAnswerPart = 'La', secondAnswerPart = 'Constitution.', secondAnswerDelayFrames = 12}) => {
   const frame = useCurrentFrame();
   const firstWordVisible = frame >= 17;
-  const secondWordVisible = frame >= 29;
+  const secondWordVisible = frame >= 17 + secondAnswerDelayFrames;
   const opacity = interpolate(frame, [0, 9, 57, 74], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)});
   const pulse = 1 + Math.sin(frame * 0.24) * 0.04;
   return (

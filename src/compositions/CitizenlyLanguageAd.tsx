@@ -1,7 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Sequence} from 'remotion';
 import {InterviewScene} from '../scenes/InterviewScene';
-import {LanguageScene} from '../scenes/LanguageScene';
 import {ListeningScene} from '../scenes/ListeningScene';
 import {OutroScene} from '../scenes/OutroScene';
 import {ResultsScene} from '../scenes/ResultsScene';
@@ -13,7 +12,12 @@ export type LanguageAdConfig = {
   englishName: string;
   nativeName: string;
   translationLabel: string;
+  englishQuestion: string;
   translatedQuestion: string;
+  answer: string;
+  firstAnswerPart: string;
+  secondAnswerPart?: string;
+  splitDelayFrames?: number;
 };
 
 export const languageAdConfigs: readonly LanguageAdConfig[] = [
@@ -23,7 +27,11 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'German',
     nativeName: 'Deutsch',
     translationLabel: 'DEUTSCH',
-    translatedQuestion: 'Was ist die Hauptstadt der Vereinigten Staaten?',
+    englishQuestion: 'Who is the President of the United States now?',
+    translatedQuestion: 'Wer ist derzeit Präsident der Vereinigten Staaten?',
+    answer: 'Donald Trump',
+    firstAnswerPart: 'Donald',
+    secondAnswerPart: 'Trump',
   },
   {
     key: 'dutch',
@@ -31,7 +39,10 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Dutch',
     nativeName: 'Nederlands',
     translationLabel: 'NEDERLANDS',
-    translatedQuestion: 'Wat is de hoofdstad van de Verenigde Staten?',
+    englishQuestion: 'How many stars are on the flag?',
+    translatedQuestion: 'Hoeveel sterren staan er op de vlag?',
+    answer: 'Fifty',
+    firstAnswerPart: 'Fifty',
   },
   {
     key: 'swedish',
@@ -39,7 +50,11 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Swedish',
     nativeName: 'Svenska',
     translationLabel: 'SVENSKA',
-    translatedQuestion: 'Vad är USA:s huvudstad?',
+    englishQuestion: 'Who was the first President?',
+    translatedQuestion: 'Vem var den första presidenten?',
+    answer: 'George Washington',
+    firstAnswerPart: 'George',
+    secondAnswerPart: 'Washington',
   },
   {
     key: 'norwegian',
@@ -47,7 +62,10 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Norwegian',
     nativeName: 'Norsk',
     translationLabel: 'NORSK',
-    translatedQuestion: 'Hva er hovedstaden i USA?',
+    englishQuestion: 'How many U.S. senators are there?',
+    translatedQuestion: 'Hvor mange senatorer er det i USA?',
+    answer: 'One hundred',
+    firstAnswerPart: 'One hundred',
   },
   {
     key: 'danish',
@@ -55,7 +73,10 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Danish',
     nativeName: 'Dansk',
     translationLabel: 'DANSK',
-    translatedQuestion: 'Hvad er hovedstaden i USA?',
+    englishQuestion: 'How many amendments does the Constitution have?',
+    translatedQuestion: "Hvor mange forfatningstillæg har USA's forfatning?",
+    answer: 'Twenty-seven',
+    firstAnswerPart: 'Twenty-seven',
   },
   {
     key: 'italian',
@@ -63,7 +84,10 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Italian',
     nativeName: 'Italiano',
     translationLabel: 'ITALIANO',
-    translatedQuestion: 'Qual è la capitale degli Stati Uniti?',
+    englishQuestion: 'When do we celebrate Independence Day?',
+    translatedQuestion: "Quando celebriamo il Giorno dell'Indipendenza?",
+    answer: 'July 4',
+    firstAnswerPart: 'July 4',
   },
   {
     key: 'portuguese',
@@ -71,7 +95,10 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Portuguese',
     nativeName: 'Português',
     translationLabel: 'PORTUGUÊS',
-    translatedQuestion: 'Qual é a capital dos Estados Unidos?',
+    englishQuestion: 'What is the highest court in the United States?',
+    translatedQuestion: 'Qual é a mais alta corte dos Estados Unidos?',
+    answer: 'Supreme Court',
+    firstAnswerPart: 'Supreme Court',
   },
   {
     key: 'catalan',
@@ -79,7 +106,11 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Catalan',
     nativeName: 'Català',
     translationLabel: 'CATALÀ',
-    translatedQuestion: 'Quina és la capital dels Estats Units?',
+    englishQuestion: 'How long is a term for a President?',
+    translatedQuestion: "Quant dura el mandat d'un president?",
+    answer: 'Four years',
+    firstAnswerPart: 'Four',
+    secondAnswerPart: 'years',
   },
   {
     key: 'indonesian',
@@ -87,7 +118,12 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Indonesian',
     nativeName: 'Bahasa Indonesia',
     translationLabel: 'BAHASA INDONESIA',
-    translatedQuestion: 'Apa ibu kota Amerika Serikat?',
+    englishQuestion: 'What ocean is on the East Coast?',
+    translatedQuestion: 'Samudra apa yang berada di Pantai Timur?',
+    answer: 'Atlantic Ocean',
+    firstAnswerPart: 'Atlantic',
+    secondAnswerPart: 'Ocean',
+    splitDelayFrames: 6,
   },
   {
     key: 'tagalog',
@@ -95,7 +131,10 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Tagalog',
     nativeName: 'Tagalog',
     translationLabel: 'TAGALOG',
-    translatedQuestion: 'Ano ang kabisera ng Estados Unidos?',
+    englishQuestion: 'How many stripes are on the flag?',
+    translatedQuestion: 'Ilang guhit ang nasa bandila?',
+    answer: 'Thirteen',
+    firstAnswerPart: 'Thirteen',
   },
   {
     key: 'finnish',
@@ -103,7 +142,11 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Finnish',
     nativeName: 'Suomi',
     translationLabel: 'SUOMI',
-    translatedQuestion: 'Mikä on Yhdysvaltojen pääkaupunki?',
+    englishQuestion: 'Who is the President of the United States now?',
+    translatedQuestion: 'Kuka on Yhdysvaltain nykyinen presidentti?',
+    answer: 'Donald Trump',
+    firstAnswerPart: 'Donald',
+    secondAnswerPart: 'Trump',
   },
   {
     key: 'croatian',
@@ -111,7 +154,10 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Croatian',
     nativeName: 'Hrvatski',
     translationLabel: 'HRVATSKI',
-    translatedQuestion: 'Koji je glavni grad Sjedinjenih Američkih Država?',
+    englishQuestion: 'How many stars are on the flag?',
+    translatedQuestion: 'Koliko zvijezda ima na zastavi?',
+    answer: 'Fifty',
+    firstAnswerPart: 'Fifty',
   },
   {
     key: 'bosnian',
@@ -119,37 +165,38 @@ export const languageAdConfigs: readonly LanguageAdConfig[] = [
     englishName: 'Bosnian',
     nativeName: 'Bosanski',
     translationLabel: 'BOSANSKI',
-    translatedQuestion: 'Koji je glavni grad Sjedinjenih Američkih Država?',
+    englishQuestion: 'Who was the first President?',
+    translatedQuestion: 'Ko je bio prvi predsjednik?',
+    answer: 'George Washington',
+    firstAnswerPart: 'George',
+    secondAnswerPart: 'Washington',
   },
 ] as const;
 
 export const CitizenlyLanguageAd: React.FC<{languageKey?: string}> = ({languageKey = 'german'}) => {
   const config = languageAdConfigs.find((candidate) => candidate.key === languageKey) ?? languageAdConfigs[0];
-  const selectorLanguages = ['English', 'Español', 'Français', config.nativeName];
 
   return (
     <AbsoluteFill style={{backgroundColor: colors.warm}}>
-      <Sequence durationInFrames={66} premountFor={30}>
-        <LanguageScene selectedLanguage={config.nativeName} languages={selectorLanguages} />
-      </Sequence>
-      <Sequence from={54} durationInFrames={102} premountFor={30}>
+      <Sequence durationInFrames={102} premountFor={30}>
         <InterviewScene
-          question="What is the capital of the United States?"
+          question={config.englishQuestion}
           translation={config.translatedQuestion}
           translationLabel={config.translationLabel}
         />
       </Sequence>
-      <Sequence from={144} durationInFrames={74} premountFor={30}>
+      <Sequence from={90} durationInFrames={74} premountFor={30}>
         <ListeningScene
           title={`Answer in ${config.englishName}`}
-          firstAnswerPart="Washington,"
-          secondAnswerPart="D.C."
+          firstAnswerPart={config.firstAnswerPart}
+          secondAnswerPart={config.secondAnswerPart ?? ''}
+          secondAnswerDelayFrames={config.splitDelayFrames}
         />
       </Sequence>
-      <Sequence from={204} durationInFrames={106} premountFor={30}>
-        <ResultsScene answer="Washington, D.C." />
+      <Sequence from={150} durationInFrames={106} premountFor={30}>
+        <ResultsScene answer={config.answer} />
       </Sequence>
-      <Sequence from={294} durationInFrames={156} premountFor={30}>
+      <Sequence from={240} durationInFrames={210} premountFor={30}>
         <OutroScene />
       </Sequence>
     </AbsoluteFill>
