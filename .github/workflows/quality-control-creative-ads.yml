@@ -1,13 +1,13 @@
-name: Render Citizenly Creative Ads
+name: Quality Control Creative Ads
 
 on:
   workflow_dispatch:
 
 jobs:
-  render:
-    name: Render ${{ matrix.language }}
+  stills:
+    name: Inspect ${{ matrix.language }}
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     strategy:
       fail-fast: false
       max-parallel: 3
@@ -37,39 +37,31 @@ jobs:
             composition: CitizenlyFinnishCreativeAd
 
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v5
+      - uses: actions/checkout@v5
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
+      - run: npx remotion browser ensure
+      - run: npm run typecheck
 
-      - name: Install Remotion browser
-        run: npx remotion browser ensure
+      - name: Render storyboard checkpoints
+        shell: bash
+        run: |
+          mkdir -p "qc/${{ matrix.language }}"
+          for frame in 45 145 270 390; do
+            npx remotion still \
+              "${{ matrix.composition }}" \
+              "qc/${{ matrix.language }}/frame-${frame}.png" \
+              --frame="$frame"
+          done
 
-      - name: Type-check
-        run: npm run typecheck
-
-      - name: Render creative ad
-        run: >-
-          npx remotion render
-          ${{ matrix.composition }}
-          out/citizenly-${{ matrix.language }}-creative-ad.mp4
-          --codec=h264
-          --concurrency=2
-
-      - name: Verify video
-        run: test -s "out/citizenly-${{ matrix.language }}-creative-ad.mp4"
-
-      - name: Upload video
-        uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v5
         with:
-          name: citizenly-${{ matrix.language }}-creative-ad
-          path: out/citizenly-${{ matrix.language }}-creative-ad.mp4
+          name: qc-${{ matrix.language }}
+          path: qc/${{ matrix.language }}/*.png
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 7

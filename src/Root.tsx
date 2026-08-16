@@ -10,6 +10,7 @@ import {
   languageAdConfigs,
 } from "./compositions/CitizenlyLanguageAd";
 import { CitizenlySpanishAd } from "./compositions/CitizenlySpanishAd";
+import { campaignTwoCompositions } from "./compositions/campaign2";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -42,12 +43,25 @@ export const RemotionRoot: React.FC = () => {
           height={1920}
         />
       ))}
-      {creativePromoConfigs.map((config) => (
+      {creativePromoConfigs
+        .filter((config) => config.key === "croatian")
+        .map((config) => (
+          <Composition
+            key={config.compositionId}
+            id={config.compositionId}
+            component={CitizenlyCreativePromoAd}
+            defaultProps={{ promoKey: config.key }}
+            durationInFrames={450}
+            fps={30}
+            width={1080}
+            height={1920}
+          />
+        ))}
+      {campaignTwoCompositions.map(({ id, component }) => (
         <Composition
-          key={config.compositionId}
-          id={config.compositionId}
-          component={CitizenlyCreativePromoAd}
-          defaultProps={{ promoKey: config.key }}
+          key={id}
+          id={id}
+          component={component}
           durationInFrames={450}
           fps={30}
           width={1080}
