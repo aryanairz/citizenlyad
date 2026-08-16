@@ -552,6 +552,14 @@ export const Outro: React.FC<{
           style={{
             opacity: logo,
             transform: `translateY(${(1 - logo) * -24}px)`,
+            background:
+              foreground === "#fff" && !compactLogo ? "#fff" : "transparent",
+            padding: foreground === "#fff" && !compactLogo ? "28px 34px" : 0,
+            borderRadius: foreground === "#fff" && !compactLogo ? 30 : 0,
+            boxShadow:
+              foreground === "#fff" && !compactLogo
+                ? "0 18px 50px rgba(0,0,0,.18)"
+                : "none",
           }}
         >
           {compactLogo ? (

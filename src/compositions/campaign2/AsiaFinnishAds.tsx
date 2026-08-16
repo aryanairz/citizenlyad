@@ -95,7 +95,9 @@ const IndonesianHook: React.FC = () => {
                   transform: active
                     ? `scale(${0.88 + focus * 0.12})`
                     : `scale(${1 - focus * 0.025 * Math.abs(8 - i)})`,
-                  opacity: active ? focus : 0.35 + (1 - focus) * 0.65,
+                  opacity: active
+                    ? 0.42 + focus * 0.58
+                    : 0.35 + (1 - focus) * 0.65,
                 }}
               >
                 <span>{label}</span>
@@ -113,7 +115,8 @@ const IndonesianHook: React.FC = () => {
           left: 100,
           right: 160,
           bottom: 335,
-          opacity: focus,
+          opacity: 0.35 + focus * 0.65,
+          color: colors.navy,
         }}
       >
         <div
@@ -451,8 +454,8 @@ const TagalogStory: React.FC = () => {
       >
         <div
           style={{
-            height: 98,
-            padding: "42px 28px 14px",
+            height: 126,
+            padding: "68px 28px 14px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -543,37 +546,41 @@ const Route: React.FC<{ progress: number; compact?: boolean }> = ({
 }) => {
   const nodes = compact ? 20 : 42;
   const pathWidth = compact ? 590 : 760;
+  const pathHeight = compact ? 340 : 540;
+  const pointAt = (t: number) => ({
+    x: 30 + t * (pathWidth - 60),
+    y:
+      pathHeight * 0.76 -
+      t * pathHeight * 0.42 +
+      Math.sin(t * Math.PI * 2.6) * (compact ? 52 : 88),
+  });
+  const polyline = Array.from({ length: 80 }, (_, i) => {
+    const point = pointAt(i / 79);
+    return `${point.x},${point.y}`;
+  }).join(" ");
   return (
     <div
       style={{
         position: "relative",
         width: pathWidth,
-        height: compact ? 340 : 540,
+        height: pathHeight,
       }}
     >
       <svg
         width={pathWidth}
         height="100%"
-        viewBox={`0 0 ${pathWidth} ${compact ? 340 : 540}`}
+        viewBox={`0 0 ${pathWidth} ${pathHeight}`}
         style={{ position: "absolute", inset: 0 }}
       >
-        <path
-          d={
-            compact
-              ? "M28 270C130 40 250 310 370 120S510 65 565 42"
-              : "M20 480C105 370 130 90 250 160S340 500 470 350 560 65 735 45"
-          }
+        <polyline
+          points={polyline}
           fill="none"
           stroke="#D9E2E8"
           strokeWidth="10"
           strokeLinecap="round"
         />
-        <path
-          d={
-            compact
-              ? "M28 270C130 40 250 310 370 120S510 65 565 42"
-              : "M20 480C105 370 130 90 250 160S340 500 470 350 560 65 735 45"
-          }
+        <polyline
+          points={polyline}
           fill="none"
           stroke="#3272A6"
           strokeWidth="10"
@@ -585,17 +592,14 @@ const Route: React.FC<{ progress: number; compact?: boolean }> = ({
       </svg>
       {Array.from({ length: nodes }, (_, i) => {
         const done = i / nodes < progress;
-        const x = (i / (nodes - 1)) * (pathWidth - 30) + 15;
-        const y = compact
-          ? 280 - Math.sin(i * 0.78) * 100 - i * 10
-          : 440 - Math.sin(i * 0.55) * 165 - i * 8;
+        const point = pointAt(i / (nodes - 1));
         return (
           <span
             key={i}
             style={{
               position: "absolute",
-              left: x,
-              top: Math.max(18, Math.min(compact ? 310 : 510, y)),
+              left: point.x - (compact ? 9 : 7.5),
+              top: point.y - (compact ? 9 : 7.5),
               width: compact ? 18 : 15,
               height: compact ? 18 : 15,
               borderRadius: "50%",
