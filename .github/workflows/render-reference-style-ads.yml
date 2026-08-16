@@ -1,0 +1,80 @@
+name: Render Reference-Style Citizenly Ads
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "src/compositions/campaign4/**"
+      - "src/compositions/campaign3/index.ts"
+      - ".github/workflows/render-reference-style-ads.yml"
+
+jobs:
+  render:
+    name: Render ${{ matrix.language }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          - language: german
+            composition: CitizenlyGermanCreativeAd
+          - language: swedish
+            composition: CitizenlySwedishCreativeAd
+          - language: norwegian
+            composition: CitizenlyNorwegianCreativeAd
+          - language: portuguese
+            composition: CitizenlyPortugueseCreativeAd
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npx remotion browser ensure
+      - run: npm run lint
+
+      - name: Render MP4
+        run: >-
+          npx remotion render
+          ${{ matrix.composition }}
+          out/citizenly-${{ matrix.language }}-reference-style-ad.mp4
+          --codec=h264
+          --concurrency=2
+
+      - name: Verify MP4
+        run: test -s "out/citizenly-${{ matrix.language }}-reference-style-ad.mp4"
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: citizenly-${{ matrix.language }}-reference-style-ad
+          path: out/citizenly-${{ matrix.language }}-reference-style-ad.mp4
+          if-no-files-found: error
+          retention-days: 14
+
+  bundle:
+    name: Bundle four MP4 videos
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v5
+        with:
+          pattern: citizenly-*-reference-style-ad
+          path: videos
+          merge-multiple: true
+
+      - name: Verify four-video bundle
+        run: test "$(find videos -maxdepth 1 -name '*.mp4' | wc -l)" -eq 4
+
+      - uses: actions/upload-artifact@v5
+        with:
+          name: DOWNLOAD-GERMAN-SWEDISH-NORWEGIAN-PORTUGUESE-MP4S
+          path: videos/*.mp4
+          if-no-files-found: error
+          retention-days: 14

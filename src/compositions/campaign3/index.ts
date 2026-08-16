@@ -4,14 +4,16 @@ import {
   CitizenlyDanishCreativeAd,
   CitizenlyDutchCreativeAd,
   CitizenlyFinnishCreativeAd,
-  CitizenlyGermanCreativeAd,
   CitizenlyIndonesianCreativeAd,
   CitizenlyItalianCreativeAd,
+  CitizenlyTagalogCreativeAd,
+} from "./Ads";
+import {
+  CitizenlyGermanCreativeAd,
   CitizenlyNorwegianCreativeAd,
   CitizenlyPortugueseCreativeAd,
   CitizenlySwedishCreativeAd,
-  CitizenlyTagalogCreativeAd,
-} from "./Ads";
+} from "../campaign4";
 
 export const campaignThreeCompositions: Array<{
   id: string;

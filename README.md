@@ -46,6 +46,8 @@ The manually triggered **Quality Control Creative Ads** workflow renders PNG sto
 
 The **Render Citizenly Creative Ads** workflow renders all eleven third-generation campaign videos in parallel. Download `DOWNLOAD-ALL-11-MP4-VIDEOS` to get one ZIP containing only the eleven finished MP4 files. Individual language artifacts are also retained for 14 days.
 
+The **Render Reference-Style Citizenly Ads** workflow renders the German, Swedish, Norwegian, and Portuguese films built from the approved SaaS motion references. Download `DOWNLOAD-GERMAN-SWEDISH-NORWEGIAN-PORTUGUESE-MP4S` for the four finished MP4 files.
+
 ## GitHub setup
 
 This working copy is configured for `https://github.com/aryanairz/citizenlyad.git`. If setting up another clone, use:
