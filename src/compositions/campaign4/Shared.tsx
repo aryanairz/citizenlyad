@@ -17,6 +17,9 @@ export const C = {
   muted: "#727887",
   green: "#27956D",
   ice: "#EDF4FB",
+  blue: "#2D5DB3",
+  paleBlue: "#DDE8FA",
+  paleRed: "#F6DCE2",
 } as const;
 export const F = {
   clean: "'Manrope Variable', sans-serif",
@@ -49,14 +52,62 @@ export const page: CSSProperties = {
 export const GradientField: React.FC<{
   colors?: string[];
   strength?: number;
-}> = ({ colors = ["#9FA9FF", "#F6A39C", "#FFE7A3"], strength = 1 }) => (
+}> = ({ colors = [C.blue, C.red, "#F8FAFD"], strength = 1 }) => (
   <AbsoluteFill
     style={{
-      background: `radial-gradient(circle at 20% 20%,${colors[0]} 0,transparent 48%),radial-gradient(circle at 86% 42%,${colors[1]} 0,transparent 52%),radial-gradient(circle at 28% 88%,${colors[2]} 0,transparent 55%),#F5F3F0`,
+      background: `radial-gradient(circle at 15% 18%,${colors[0]} 0,transparent 48%),radial-gradient(circle at 88% 35%,${colors[1]} 0,transparent 49%),radial-gradient(circle at 40% 95%,${colors[2]} 0,transparent 58%),#F7F8FB`,
       filter: `saturate(${strength})`,
     }}
   />
 );
+
+export const AmericanBackdrop: React.FC<{
+  dark?: boolean;
+  quiet?: boolean;
+}> = ({ dark = false, quiet = false }) => {
+  const frame = useCurrentFrame();
+  const drift = Math.sin(frame * 0.025) * 26;
+  return (
+    <AbsoluteFill
+      style={{
+        overflow: "hidden",
+        background: dark
+          ? "radial-gradient(circle at 18% 22%,#244F9A88 0,transparent 36%),radial-gradient(circle at 88% 68%,#A516324f 0,transparent 40%),linear-gradient(155deg,#06142D,#020712 72%)"
+          : "radial-gradient(circle at 10% 12%,#DCE8FC 0,transparent 34%),radial-gradient(circle at 92% 78%,#F5DCE2 0,transparent 36%),#FCFCFB",
+      }}
+    >
+      <svg
+        width="1080"
+        height="1920"
+        viewBox="0 0 1080 1920"
+        style={{ position: "absolute", inset: 0, opacity: quiet ? 0.16 : 0.28 }}
+      >
+        <g transform={`translate(${drift} 0)`}>
+          {Array.from({ length: 11 }, (_, i) => (
+            <path
+              key={i}
+              d="M0-10 2.9-3.2 10-3.1 4.4 1.2 6.2 8-0 4.2-6.2 8-4.4 1.2-10-3.1-2.9-3.2Z"
+              transform={`translate(${110 + (i % 4) * 235} ${300 + Math.floor(i / 4) * 540}) scale(${i % 3 === 0 ? 1.4 : 1})`}
+              fill={i % 2 === 0 ? (dark ? "#7CA8FF" : C.blue) : C.red}
+            />
+          ))}
+        </g>
+        <path
+          d="M-80 1460 C250 1310 520 1600 1160 1330"
+          fill="none"
+          stroke={dark ? "#7CA8FF" : C.blue}
+          strokeWidth="2"
+        />
+        <path
+          d="M-120 1510 C280 1360 550 1650 1180 1380"
+          fill="none"
+          stroke={C.red}
+          strokeWidth="2"
+        />
+      </svg>
+    </AbsoluteFill>
+  );
+};
 
 export const Noise: React.FC<{ opacity?: number }> = ({ opacity = 0.035 }) => (
   <svg

@@ -2,6 +2,7 @@ import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import {
   BrandMark,
+  C,
   Cut,
   F,
   Glass,
@@ -14,7 +15,7 @@ import {
 
 const dark = {
   background:
-    "radial-gradient(circle at 50% 48%,#0C2E64 0,#07172F 34%,#030813 72%)",
+    "radial-gradient(circle at 18% 18%,#123C79 0,transparent 42%),radial-gradient(circle at 84% 82%,#68152B 0,transparent 40%),#030813",
   color: "white",
 } as const;
 const CenterCopy: React.FC<{ children: React.ReactNode; accent?: string }> = ({
@@ -26,9 +27,9 @@ const CenterCopy: React.FC<{ children: React.ReactNode; accent?: string }> = ({
     <div
       style={{
         position: "absolute",
-        left: 100,
-        right: 160,
-        top: 650,
+        inset: "180px 160px 300px 100px",
+        display: "grid",
+        placeItems: "center",
         textAlign: "center",
         fontFamily: F.display,
         fontSize: 72,
@@ -91,6 +92,11 @@ export const CitizenlyNorwegianReferenceAd: React.FC = () => {
               transform: `scale(${sp(frame, 140)})`,
             }}
           />
+          <Orbit
+            color={C.red}
+            size={620}
+            style={{ left: 230, top: 615, opacity: 0.46 }}
+          />
           <div
             style={{
               position: "absolute",
@@ -116,6 +122,11 @@ export const CitizenlyNorwegianReferenceAd: React.FC = () => {
       <Cut from={155} to={245}>
         <AbsoluteFill style={dark}>
           <Orbit style={{ left: 160, top: 545 }} />
+          <Orbit
+            color={C.red}
+            size={620}
+            style={{ left: 230, top: 615, opacity: 0.38 }}
+          />
           <div
             style={{
               position: "absolute",
@@ -134,7 +145,7 @@ export const CitizenlyNorwegianReferenceAd: React.FC = () => {
                 fontFamily: F.display,
                 fontSize: 82,
                 fontWeight: 560,
-                color: "#78A9FF",
+                color: frame < 215 ? C.blue : C.red,
                 letterSpacing: -4,
                 marginTop: 8,
                 filter: `blur(${(1 - sp(frame, wordStart)) * 14}px)`,
@@ -206,7 +217,14 @@ export const CitizenlyNorwegianReferenceAd: React.FC = () => {
                     transform: `translateX(${(1 - q) * 90}px)`,
                   }}
                 >
-                  <div style={{ fontSize: 37, color: "#78A9FF" }}>{icon}</div>
+                  <div
+                    style={{
+                      fontSize: 37,
+                      color: i === 1 ? C.red : "#78A9FF",
+                    }}
+                  >
+                    {icon}
+                  </div>
                   <div>
                     <div style={{ fontSize: 27, fontWeight: 680 }}>{title}</div>
                     <div
@@ -230,9 +248,10 @@ export const CitizenlyNorwegianReferenceAd: React.FC = () => {
           <div
             style={{
               position: "absolute",
-              left: 95,
-              right: 155,
-              top: 650,
+              inset: "180px 155px 300px 95px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
               textAlign: "center",
             }}
           >
@@ -252,7 +271,7 @@ export const CitizenlyNorwegianReferenceAd: React.FC = () => {
                 fontSize: 83,
                 fontWeight: 560,
                 letterSpacing: -4,
-                color: "#78A9FF",
+                color: C.red,
                 marginTop: 10,
               }}
             >

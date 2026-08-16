@@ -16,8 +16,58 @@ import {
 
 const studio = {
   background:
-    "radial-gradient(circle at 75% 18%,#D7D5FF 0,transparent 34%),radial-gradient(circle at 22% 88%,#C8E8FA 0,transparent 42%),#F5F4F1",
+    "radial-gradient(circle at 78% 18%,#F4D8DF 0,transparent 36%),radial-gradient(circle at 18% 82%,#DCE8FC 0,transparent 44%),#F8F7F4",
 } as const;
+
+const StudioAccents: React.FC = () => (
+  <>
+    <div
+      style={{
+        position: "absolute",
+        left: 72,
+        top: 600,
+        padding: "18px 24px",
+        borderRadius: 999,
+        background: "#FFFFFFB8",
+        border: "1px solid #FFFFFF",
+        boxShadow: "0 20px 60px #17233D14",
+        color: C.navy,
+        fontFamily: F.mono,
+        fontSize: 14,
+      }}
+    >
+      128 FRÅGOR
+    </div>
+    <div
+      style={{
+        position: "absolute",
+        right: 142,
+        top: 510,
+        padding: "18px 24px",
+        borderRadius: 999,
+        background: "#FFFFFFB8",
+        border: "1px solid #FFFFFF",
+        boxShadow: "0 20px 60px #17233D14",
+        color: C.blue,
+        fontFamily: F.mono,
+        fontSize: 14,
+      }}
+    >
+      LJUD PÅ SVENSKA
+    </div>
+    <div
+      style={{
+        position: "absolute",
+        right: 150,
+        bottom: 420,
+        width: 170,
+        height: 170,
+        borderRadius: "50%",
+        border: `2px solid ${C.red}25`,
+      }}
+    />
+  </>
+);
 
 export const CitizenlySwedishReferenceAd: React.FC = () => {
   const frame = useCurrentFrame();
@@ -25,6 +75,7 @@ export const CitizenlySwedishReferenceAd: React.FC = () => {
     <AbsoluteFill style={page}>
       <Cut from={0} to={75}>
         <AbsoluteFill style={studio}>
+          <StudioAccents />
           <Phone
             style={{
               top: 330,
@@ -105,6 +156,7 @@ export const CitizenlySwedishReferenceAd: React.FC = () => {
 
       <Cut from={75} to={150}>
         <AbsoluteFill style={studio}>
+          <StudioAccents />
           <Phone
             style={{
               top: 310,
@@ -142,6 +194,7 @@ export const CitizenlySwedishReferenceAd: React.FC = () => {
 
       <Cut from={150} to={215}>
         <AbsoluteFill style={studio}>
+          <StudioAccents />
           <Phone
             style={{
               top: 355,
@@ -179,18 +232,19 @@ export const CitizenlySwedishReferenceAd: React.FC = () => {
                 0:08
               </span>
             </div>
-            <Wave color="#3478F6" width={760} height={150} />
+            <Wave color={C.blue} width={760} height={150} />
           </Glass>
         </AbsoluteFill>
       </Cut>
 
       <Cut from={215} to={280}>
         <AbsoluteFill style={studio}>
+          <StudioAccents />
           <div
             style={{
               position: "absolute",
               left: 540,
-              top: 625,
+              top: 650,
               width: 170,
               height: 170,
               borderRadius: "50%",
@@ -208,9 +262,9 @@ export const CitizenlySwedishReferenceAd: React.FC = () => {
           <div
             style={{
               position: "absolute",
-              top: 860,
-              left: 150,
-              right: 200,
+              top: 885,
+              left: 100,
+              right: 160,
               textAlign: "center",
             }}
           >
@@ -242,6 +296,7 @@ export const CitizenlySwedishReferenceAd: React.FC = () => {
 
       <Cut from={280} to={350}>
         <AbsoluteFill style={studio}>
+          <StudioAccents />
           <Phone
             style={{
               top: 330,
@@ -288,6 +343,7 @@ export const CitizenlySwedishReferenceAd: React.FC = () => {
 
       <Cut from={350} to={450}>
         <AbsoluteFill style={studio}>
+          <StudioAccents />
           <Phone
             screen="#090D15"
             style={{
