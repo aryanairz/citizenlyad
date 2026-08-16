@@ -1,8 +1,10 @@
-# Citizenly French Remotion Ad
+# Citizenly Remotion Ad Campaign
 
 A polished family of 15-second vertical product advertisements for Citizenly, built with React, TypeScript, and Remotion. Every composition is 1080 × 1920, 30 fps, and 450 frames.
 
 Available compositions include French, Spanish, German, Dutch, Swedish, Norwegian, Danish, Italian, Portuguese, Catalan, Indonesian, Tagalog, Finnish, Croatian, and Bosnian variants.
+
+The **Creative Campaign** adds twelve original 15-second Reels—not simple translations—for German, Dutch, Swedish, Norwegian, Danish, Italian, Portuguese, Catalan, Indonesian, Tagalog, Finnish, and Croatian. Each has its own localized hook, visual concept, feature story, and call to action. French, Spanish, and Bosnian are intentionally excluded from this new set.
 
 All motion is deterministic and frame-driven. The project uses only bundled Citizenly PNGs, React/CSS, and inline SVG; rendering does not fetch fonts, images, or API data.
 
@@ -39,6 +41,8 @@ The current development machine reports `win32` and `arm64`. Remotion's managed 
 The artifact contains `citizenly-french-ad.mp4` and is retained for 14 days.
 
 The manually triggered **Render Citizenly Localized Ads** workflow renders the 13 Germanic, Romance, and other localized variants as separate downloadable artifacts.
+
+The manually triggered **Render Citizenly Creative Ads** workflow renders all twelve new campaign videos in parallel. Each finished video appears as its own artifact named `citizenly-<language>-creative-ad` and is retained for 14 days.
 
 ## GitHub setup
 
