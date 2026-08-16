@@ -10,7 +10,7 @@ import {
   languageAdConfigs,
 } from "./compositions/CitizenlyLanguageAd";
 import { CitizenlySpanishAd } from "./compositions/CitizenlySpanishAd";
-import { campaignTwoCompositions } from "./compositions/campaign2";
+import { campaignThreeCompositions } from "./compositions/campaign3";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -57,7 +57,7 @@ export const RemotionRoot: React.FC = () => {
             height={1920}
           />
         ))}
-      {campaignTwoCompositions.map(({ id, component }) => (
+      {campaignThreeCompositions.map(({ id, component }) => (
         <Composition
           key={id}
           id={id}

@@ -4,7 +4,7 @@ A polished family of 15-second vertical product advertisements for Citizenly, bu
 
 Available compositions include French, Spanish, German, Dutch, Swedish, Norwegian, Danish, Italian, Portuguese, Catalan, Indonesian, Tagalog, Finnish, Croatian, and Bosnian variants.
 
-The second-generation **Creative Campaign** contains eleven independently art-directed 15-second Reels for German, Dutch, Swedish, Norwegian, Danish, Italian, Portuguese, Catalan, Indonesian, Tagalog, and Finnish. Each has its own storyboard, layout system, product demonstration, motion language, localized hook, and call to action. The Croatian creative and the existing French, Spanish, and Bosnian work remain separate and unchanged.
+The third-generation **Creative Campaign** contains eleven independently directed 15-second Reels for German, Dutch, Swedish, Norwegian, Danish, Italian, Portuguese, Catalan, Indonesian, Tagalog, and Finnish. The campaign replaces template-like phone/card montages with focused product films: an eligibility diagnostic, command workflow, audio player, state-profile walkthrough, deadpan pricing memo, study timeline, feature canvas, native-review document, language search, family handoff, and 65/20 onboarding. The Croatian creative and the existing French, Spanish, and Bosnian work remain separate and unchanged.
 
 All motion is deterministic and frame-driven. The project uses only bundled Citizenly PNGs, React/CSS, and inline SVG; rendering does not fetch fonts, images, or API data.
 
@@ -42,9 +42,9 @@ The artifact contains `citizenly-french-ad.mp4` and is retained for 14 days.
 
 The manually triggered **Render Citizenly Localized Ads** workflow renders the 13 Germanic, Romance, and other localized variants as separate downloadable artifacts.
 
-The manually triggered **Quality Control Creative Ads** workflow renders four full-resolution storyboard checkpoints from every second-generation ad for visual review.
+The manually triggered **Quality Control Creative Ads** workflow renders four full-resolution storyboard checkpoints from every third-generation ad for visual review.
 
-The manually triggered **Render Citizenly Creative Ads** workflow renders all eleven second-generation campaign videos in parallel. Each finished video appears as its own artifact named `citizenly-<language>-creative-ad` and is retained for 14 days.
+The manually triggered **Render Citizenly Creative Ads** workflow renders all eleven third-generation campaign videos in parallel. Each finished video appears as its own artifact named `citizenly-<language>-creative-ad` and is retained for 14 days.
 
 ## GitHub setup
 
