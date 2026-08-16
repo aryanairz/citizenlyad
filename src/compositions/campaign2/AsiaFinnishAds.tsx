@@ -59,6 +59,33 @@ const IndonesianHook: React.FC = () => {
       <div
         style={{
           position: "absolute",
+          left: 0,
+          right: 0,
+          top: 165,
+          height: 300,
+          padding: "54px 150px 35px 100px",
+          background:
+            "linear-gradient(180deg,#F3EEDF 0%,#F3EEDF 82%,rgba(243,238,223,0) 100%)",
+          zIndex: 12,
+        }}
+      >
+        <Eyebrow color="#D84545">46+ bahasa</Eyebrow>
+        <div
+          style={{
+            fontSize: 54,
+            lineHeight: 1.05,
+            letterSpacing: -2.2,
+            fontWeight: 840,
+            color: colors.navy,
+            marginTop: 30,
+          }}
+        >
+          Belajar dalam bahasa yang benar-benar Anda pahami.
+        </div>
+      </div>
+      <div
+        style={{
+          position: "absolute",
           inset: 0,
           perspective: 900,
           overflow: "hidden",
@@ -68,10 +95,10 @@ const IndonesianHook: React.FC = () => {
           style={{
             position: "absolute",
             left: 65,
-            top: 300,
+            top: 480,
             width: 920,
             transformStyle: "preserve-3d",
-            transform: `translateY(${-focus * 360}px) rotateX(${18 - focus * 18}deg)`,
+            transform: `translateY(${-focus * 460}px) rotateX(${18 - focus * 18}deg)`,
           }}
         >
           {languageBands.map((label, i) => {
@@ -107,27 +134,6 @@ const IndonesianHook: React.FC = () => {
               </div>
             );
           })}
-        </div>
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          left: 100,
-          right: 160,
-          bottom: 335,
-          opacity: 0.35 + focus * 0.65,
-          color: colors.navy,
-        }}
-      >
-        <div
-          style={{
-            fontSize: 58,
-            lineHeight: 1.05,
-            letterSpacing: -2.3,
-            fontWeight: 840,
-          }}
-        >
-          Belajar dalam bahasa yang benar-benar Anda pahami.
         </div>
       </div>
     </AbsoluteFill>
