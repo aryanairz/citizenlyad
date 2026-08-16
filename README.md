@@ -42,9 +42,9 @@ The artifact contains `citizenly-french-ad.mp4` and is retained for 14 days.
 
 The manually triggered **Render Citizenly Localized Ads** workflow renders the 13 Germanic, Romance, and other localized variants as separate downloadable artifacts.
 
-The manually triggered **Quality Control Creative Ads** workflow renders four full-resolution storyboard checkpoints from every third-generation ad for visual review.
+The manually triggered **Quality Control Creative Ads** workflow renders PNG storyboard checkpoints for design inspection only. These are not the finished videos.
 
-The manually triggered **Render Citizenly Creative Ads** workflow renders all eleven third-generation campaign videos in parallel. Each finished video appears as its own artifact named `citizenly-<language>-creative-ad` and is retained for 14 days.
+The **Render Citizenly Creative Ads** workflow renders all eleven third-generation campaign videos in parallel. Download `DOWNLOAD-ALL-11-MP4-VIDEOS` to get one ZIP containing only the eleven finished MP4 files. Individual language artifacts are also retained for 14 days.
 
 ## GitHub setup
 

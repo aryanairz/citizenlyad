@@ -1,4 +1,10 @@
 import "./index.css";
+import "@fontsource-variable/space-grotesk";
+import "@fontsource-variable/newsreader";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/700.css";
+import "@fontsource-variable/archivo";
+import "@fontsource-variable/manrope";
 import { Composition } from "remotion";
 import { CitizenlyFrenchAd } from "./compositions/CitizenlyFrenchAd";
 import {

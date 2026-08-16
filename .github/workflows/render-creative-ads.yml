@@ -79,3 +79,28 @@ jobs:
           path: out/citizenly-${{ matrix.language }}-creative-ad.mp4
           if-no-files-found: error
           retention-days: 14
+
+  bundle:
+    name: Bundle all MP4 videos
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download rendered videos
+        uses: actions/download-artifact@v5
+        with:
+          pattern: citizenly-*-creative-ad
+          path: videos
+          merge-multiple: true
+
+      - name: Verify MP4 bundle
+        run: |
+          test "$(find videos -maxdepth 1 -name '*.mp4' | wc -l)" -eq 11
+          find videos -maxdepth 1 -name '*.mp4' -type f -size +0
+
+      - name: Upload MP4-only bundle
+        uses: actions/upload-artifact@v5
+        with:
+          name: DOWNLOAD-ALL-11-MP4-VIDEOS
+          path: videos/*.mp4
+          if-no-files-found: error
+          retention-days: 14

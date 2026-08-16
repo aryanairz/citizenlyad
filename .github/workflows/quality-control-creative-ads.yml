@@ -2,12 +2,6 @@ name: Quality Control Creative Ads
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "src/compositions/campaign3/**"
-      - "src/Root.tsx"
-      - ".github/workflows/quality-control-creative-ads.yml"
 
 jobs:
   stills:
@@ -67,7 +61,7 @@ jobs:
 
       - uses: actions/upload-artifact@v5
         with:
-          name: qc-${{ matrix.language }}
+          name: storyboard-pngs-${{ matrix.language }}
           path: qc/${{ matrix.language }}/*.png
           if-no-files-found: error
           retention-days: 7

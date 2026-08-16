@@ -6,6 +6,11 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@fontsource-variable/archivo": "5.2.8",
+    "@fontsource-variable/manrope": "5.2.8",
+    "@fontsource-variable/newsreader": "5.2.8",
+    "@fontsource-variable/space-grotesk": "5.2.8",
+    "@fontsource/ibm-plex-mono": "5.2.7",
     "@remotion/cli": "4.0.489",
     "react": "19.2.3",
     "react-dom": "19.2.3",
